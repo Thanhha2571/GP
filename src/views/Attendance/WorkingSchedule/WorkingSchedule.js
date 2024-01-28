@@ -36,7 +36,7 @@ const WorkingSchedule = () => {
     const getAllShifts = async () => {
         if (userObject?.role === "Admin") {
             try {
-                const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-shift/get-all', { withCredentials: true });
+                const response = await axios.get('http://localhost:8800/api/admin/manage-shift/get-all', { withCredentials: true });
                 // console.log(response.data.message);
                 setShiftList(response.data.message);
             } catch (err) {
@@ -46,7 +46,7 @@ const WorkingSchedule = () => {
 
         if (userObject?.role === "Inhaber") {
             try {
-                const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-shift/get-all', { withCredentials: true });
+                const response = await axios.get('http://localhost:8800/api/inhaber/manage-shift/get-all', { withCredentials: true });
                 // console.log(response.data.message);
                 setShiftList(response.data.message);
             } catch (err) {
@@ -55,7 +55,7 @@ const WorkingSchedule = () => {
         }
         if (userObject?.role === "Manager") {
             try {
-                const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/manager/manage-shift/get-all', { withCredentials: true });
+                const response = await axios.get('http://localhost:8800/api/manager/manage-shift/get-all', { withCredentials: true });
                 // console.log(response.data.message);
                 setShiftList(response.data.message);
             } catch (err) {
@@ -127,11 +127,11 @@ const WorkingSchedule = () => {
             let response;
 
             if (userObject?.role === "Admin") {
-                response = await axios.post('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-shift/create', shiftData, { withCredentials: true });
+                response = await axios.post('http://localhost:8800/api/admin/manage-shift/create', shiftData, { withCredentials: true });
             }
 
             if (userObject?.role === "Inhaber") {
-                response = await axios.post('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-shift/create', shiftData, { withCredentials: true });
+                response = await axios.post('http://localhost:8800/api/inhaber/manage-shift/create', shiftData, { withCredentials: true });
             }
 
             // Fetch the updated list of shifts after creating a new shift
@@ -164,11 +164,11 @@ const WorkingSchedule = () => {
             let response;
 
             if (userObject?.role === "Admin") {
-                response = await axios.delete(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-shift/delete?code=${selectedShiftDelete}`, { withCredentials: true });
+                response = await axios.delete(`http://localhost:8800/api/admin/manage-shift/delete?code=${selectedShiftDelete}`, { withCredentials: true });
             }
 
             if (userObject?.role === "Inhaber") {
-                response = await axios.delete(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-shift/delete?code=${selectedShiftDelete}`, { withCredentials: true });
+                response = await axios.delete(`http://localhost:8800/api/inhaber/manage-shift/delete?code=${selectedShiftDelete}`, { withCredentials: true });
             }
 
             // Fetch the updated list of shifts after creating a new shift
@@ -196,14 +196,14 @@ const WorkingSchedule = () => {
             let response;
 
             if (userObject?.role === "Admin" && formEdit.name_edit !== "" && formEdit.start_time_edit === "" && formEdit.end_time_edit === "") {
-                response = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-shift/update?code=${selectedShiftEdit}`, {
+                response = await axios.put(`http://localhost:8800/api/admin/manage-shift/update?code=${selectedShiftEdit}`, {
                     name: formEdit.name_edit
                 }, { withCredentials: true });
 
             }
 
             if (userObject?.role === "Admin" && formEdit.name_edit === "" && formEdit.start_time_edit !== "" && formEdit.end_time_edit !== "") {
-                response = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-shift/update?code=${selectedShiftEdit}`, {
+                response = await axios.put(`http://localhost:8800/api/admin/manage-shift/update?code=${selectedShiftEdit}`, {
                     time_slot: {
                         start_time: timeStartEdit,
                         end_time: timeEndEdit
@@ -213,7 +213,7 @@ const WorkingSchedule = () => {
             }
 
             if (userObject?.role === "Admin" && formEdit.name_edit !== "" && formEdit.start_time_edit !== "" && formEdit.end_time_edit !== "") {
-                response = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-shift/update?code=${selectedShiftEdit}`, {
+                response = await axios.put(`http://localhost:8800/api/admin/manage-shift/update?code=${selectedShiftEdit}`, {
                     name: formEdit.name_edit,
                     time_slot: {
                         start_time: timeStartEdit,
@@ -224,14 +224,14 @@ const WorkingSchedule = () => {
             }
 
             if (userObject?.role === "Inhaber" && formEdit.name_edit !== "" && formEdit.start_time_edit === "" && formEdit.end_time_edit === "") {
-                response = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-shift/update?code=${selectedShiftEdit}`, {
+                response = await axios.put(`http://localhost:8800/api/inhaber/manage-shift/update?code=${selectedShiftEdit}`, {
                     name: formEdit.name_edit
                 }, { withCredentials: true });
 
             }
 
             if (userObject?.role === "Inhaber" && formEdit.name_edit === "" && formEdit.start_time_edit !== "" && formEdit.end_time_edit !== "") {
-                response = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-shift/update?code=${selectedShiftEdit}`, {
+                response = await axios.put(`http://localhost:8800/api/inhaber/manage-shift/update?code=${selectedShiftEdit}`, {
                     time_slot: {
                         start_time: timeStartEdit,
                         end_time: timeEndEdit
@@ -241,7 +241,7 @@ const WorkingSchedule = () => {
             }
 
             if (userObject?.role === "Inhaber" && formEdit.name_edit !== "" && formEdit.start_time_edit !== "" && formEdit.end_time_edit !== "") {
-                response = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-shift/update?code=${selectedShiftEdit}`, {
+                response = await axios.put(`http://localhost:8800/api/inhaber/manage-shift/update?code=${selectedShiftEdit}`, {
                     name: formEdit.name_edit,
                     time_slot: {
                         start_time: timeStartEdit,

@@ -52,7 +52,7 @@ const SalaryEmployee = () => {
         if (userObject.role === 'Admin' && monthPicker !== "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-stats/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
+                    `http://localhost:8800/api/admin/manage-stats/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
                     { withCredentials: true }
                 );
                 setSalaryListByMonth(data?.message)
@@ -68,7 +68,7 @@ const SalaryEmployee = () => {
         if (userObject.role === 'Admin' && monthPicker !== "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-attendance/get-stats?employeeID=${employeeId}&employeeName=${employeeName}&year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}`,
+                    `http://localhost:8800/api/admin/manage-attendance/get-stats?employeeID=${employeeId}&employeeName=${employeeName}&year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}`,
                     { withCredentials: true }
                 );
                 setUser(data?.message)
@@ -85,7 +85,7 @@ const SalaryEmployee = () => {
         if (userObject.role === 'Inhaber' && monthPicker !== "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-stats/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&inhaber_name=${userObject?.name}&employeeID=${employeeId}&employeeName=${employeeName}`,
+                    `http://localhost:8800/api/inhaber/manage-stats/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&inhaber_name=${userObject?.name}&employeeID=${employeeId}&employeeName=${employeeName}`,
                     { withCredentials: true }
                 );
                 setSalaryListByMonth(data?.message)
@@ -102,7 +102,7 @@ const SalaryEmployee = () => {
         if (userObject.role === 'Inhaber' && monthPicker !== "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-attendance/get-stats?inhaber_name=${userObject?.name}&year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
+                    `http://localhost:8800/api/inhaber/manage-attendance/get-stats?inhaber_name=${userObject?.name}&year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
                     { withCredentials: true }
                 );
                 setUser(data?.message)
@@ -122,7 +122,7 @@ const SalaryEmployee = () => {
         try {
             if (userObject?.role === "Admin") {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-xlsx/attendance-stats?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
+                    `http://localhost:8800/api/admin/manage-xlsx/attendance-stats?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
                     { responseType: "arraybuffer", withCredentials: true }
                 );
 
@@ -139,7 +139,7 @@ const SalaryEmployee = () => {
 
             if (userObject?.role === "Inhaber") {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-xlsx/attendance-stats?inahber_name=${userObject?.name}&year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
+                    `http://localhost:8800/api/inhaber/manage-xlsx/attendance-stats?inahber_name=${userObject?.name}&year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
                     { responseType: "arraybuffer", withCredentials: true }
                 );
 
@@ -167,7 +167,7 @@ const SalaryEmployee = () => {
         try {
             if (userObject?.role === "Admin") {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-xlsx/employee-attendance?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
+                    `http://localhost:8800/api/admin/manage-xlsx/employee-attendance?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${employeeId}&employeeName=${employeeName}`,
                     { responseType: "arraybuffer", withCredentials: true }
                 );
 
@@ -183,7 +183,7 @@ const SalaryEmployee = () => {
             }
             if (userObject?.role === "Inhaber") {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-xlsx/employee-attendance?inahber_name=${userObject?.name}&year=${inputYear}&month=${inputMonth}&employeeID=${employeeId}&employeeName=${employeeName}`,
+                    `http://localhost:8800/api/inhaber/manage-xlsx/employee-attendance?inahber_name=${userObject?.name}&year=${inputYear}&month=${inputMonth}&employeeID=${employeeId}&employeeName=${employeeName}`,
                     { responseType: "arraybuffer", withCredentials: true }
                 );
 

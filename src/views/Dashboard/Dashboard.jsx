@@ -60,7 +60,7 @@ function Dashboard() {
             if (userObject?.role === "Admin") {
                 if (selectedDepartment === "Selected Department") {
                     try {
-                        const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-employee/get-all-schedules?year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}`, { withCredentials: true });
+                        const response = await axios.get(`http://localhost:8800/api/admin/manage-employee/get-all-schedules?year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}`, { withCredentials: true });
                         setUserListToday(response.data.message);
                     } catch (error) {
                         setUserListToday([])
@@ -72,7 +72,7 @@ function Dashboard() {
                 }
                 if (selectedDepartment !== "Selected Department") {
                     try {
-                        const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-employee/get-all-schedules?year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}&department_name=${selectedDepartment}`, { withCredentials: true });
+                        const response = await axios.get(`http://localhost:8800/api/admin/manage-employee/get-all-schedules?year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}&department_name=${selectedDepartment}`, { withCredentials: true });
                         setUserListToday(response.data.message);
                     } catch (error) {
                         setUserListToday([])
@@ -87,7 +87,7 @@ function Dashboard() {
                 if (selectedDepartment === "Selected Department") {
                     // if (currentDate) {
                     try {
-                        const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/get-all-schedules?inhaber_name=${userObject?.name}&year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}`, { withCredentials: true });
+                        const response = await axios.get(`http://localhost:8800/api/inhaber/manage-employee/get-all-schedules?inhaber_name=${userObject?.name}&year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}`, { withCredentials: true });
                         setUserListToday(response.data.message);
                     } catch (error) {
                         setUserListToday([])
@@ -101,7 +101,7 @@ function Dashboard() {
                 if (selectedDepartment !== "Selected Department") {
                     // if (currentDate) {
                     try {
-                        const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/get-all-schedules?inhaber_name=${userObject?.name}&year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}&department_name=${selectedDepartment}`, { withCredentials: true });
+                        const response = await axios.get(`http://localhost:8800/api/inhaber/manage-employee/get-all-schedules?inhaber_name=${userObject?.name}&year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}&department_name=${selectedDepartment}`, { withCredentials: true });
                         setUserListToday(response.data.message);
                     } catch (error) {
                         setUserListToday([])
@@ -119,7 +119,7 @@ function Dashboard() {
             if (userObject?.role === "Admin") {
                 if (selectedDepartment === "Selected Department") {
                     try {
-                        const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-attendance/get-by-specific?year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}`, { withCredentials: true });
+                        const response = await axios.get(`http://localhost:8800/api/admin/manage-attendance/get-by-specific?year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}`, { withCredentials: true });
                         setUserAttendListToday(response.data.message);
                     } catch (error) {
                         setUserListToday([])
@@ -132,7 +132,7 @@ function Dashboard() {
                 }
                 if (selectedDepartment !== "Selected Department") {
                     try {
-                        const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-attendance/get-by-specific?year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}&department_name=${selectedDepartment}`, { withCredentials: true });
+                        const response = await axios.get(`http://localhost:8800/api/admin/manage-attendance/get-by-specific?year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}&department_name=${selectedDepartment}`, { withCredentials: true });
                         setUserAttendListToday(response.data.message);
                     } catch (error) {
                         setUserListToday([])
@@ -147,7 +147,7 @@ function Dashboard() {
             if (userObject?.role === "Inhaber") {
                 if (selectedDepartment === "Selected Department") {
                     try {
-                        const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-attendance/get-by-specific?inhaber_name=${userObject?.name}&year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}`, { withCredentials: true });
+                        const response = await axios.get(`http://localhost:8800/api/inhaber/manage-attendance/get-by-specific?inhaber_name=${userObject?.name}&year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}`, { withCredentials: true });
                         setUserAttendListToday(response.data.message);
                     } catch (error) {
                         setUserListToday([])
@@ -160,7 +160,7 @@ function Dashboard() {
                 }
                 if (selectedDepartment !== "Selected Department") {
                     try {
-                        const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-attendance/get-by-specific?inhaber_name=${userObject?.name}&year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}&department_name=${selectedDepartment}`, { withCredentials: true });
+                        const response = await axios.get(`http://localhost:8800/api/admin/manage-attendance/get-by-specific?inhaber_name=${userObject?.name}&year=${datePicker.substring(6, 10)}&month=${datePicker.substring(0, 2)}&date=${datePicker}&department_name=${selectedDepartment}`, { withCredentials: true });
                         setUserAttendListToday(response.data.message);
                     } catch (error) {
                         setUserListToday([])
@@ -191,7 +191,7 @@ function Dashboard() {
     useEffect(() => {
         const getAllDepartments = async () => {
             try {
-                const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-department/get-all', { withCredentials: true });
+                const response = await axios.get('http://localhost:8800/api/admin/manage-department/get-all', { withCredentials: true });
                 setDepartmentList(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -202,7 +202,7 @@ function Dashboard() {
         //     setLoading(true)
         //     if (currentDate && userObject?.role === "Admin") {
         //         try {
-        //             const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-employee/get-all-schedules?year=${year}&month=${month}&date=${currentDate}`, { withCredentials: true });
+        //             const response = await axios.get(`http://localhost:8800/api/admin/manage-employee/get-all-schedules?year=${year}&month=${month}&date=${currentDate}`, { withCredentials: true });
         //             setUserListToday(response.data.message);
         //         } catch (error) {
         //             console.error('Error fetching employees by date and shift:', error);
@@ -212,7 +212,7 @@ function Dashboard() {
         //     }
         //     if (currentDate && userObject?.role === "Inhaber") {
         //         try {
-        //             const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/get-all-schedules?inhaber_name=${userObject?.name}&year=${year}&month=${month}&date=${currentDate}`, { withCredentials: true });
+        //             const response = await axios.get(`http://localhost:8800/api/inhaber/manage-employee/get-all-schedules?inhaber_name=${userObject?.name}&year=${year}&month=${month}&date=${currentDate}`, { withCredentials: true });
         //             setUserListToday(response.data.message);
         //         } catch (error) {
         //             console.error('Error fetching employees by date and shift:', error);

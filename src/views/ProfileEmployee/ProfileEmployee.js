@@ -75,7 +75,7 @@ const ProfileEmployee = () => {
         if (userObject?.role === "Admin") {
             setLoading(true);
             try {
-                const { data } = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-department/add-member/${selectedDepartmentEmployee}`,
+                const { data } = await axios.put(`http://localhost:8800/api/admin/manage-department/add-member/${selectedDepartmentEmployee}`,
                     {
                         employeeID: id,
                         employeeName: name,
@@ -102,7 +102,7 @@ const ProfileEmployee = () => {
     const getUser = async () => {
         if (userObject?.role === 'Admin') {
             try {
-                const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-employee/get-byId?employeeID=${id}&employeeName=${name}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8800/api/admin/manage-employee/get-byId?employeeID=${id}&employeeName=${name}`, { withCredentials: true });
                 console.log(response.data.message);
                 setUser(response.data.message);
                 // setDepartmentDefined(response.data.message[0]?.department)
@@ -114,7 +114,7 @@ const ProfileEmployee = () => {
         }
         if (userObject?.role === 'Inhaber') {
             try {
-                const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/get-byId?inhaber_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8800/api/inhaber/manage-employee/get-byId?inhaber_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`, { withCredentials: true });
                 console.log(response.data.message);
                 setUser(response.data.message);
                 // setDepartmentDefined(response.data.message[0]?.department)
@@ -127,7 +127,7 @@ const ProfileEmployee = () => {
 
         if (userObject?.role === 'Manager') {
             try {
-                const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/manager/manage-employee/get-byId?manager_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8800/api/manager/manage-employee/get-byId?manager_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`, { withCredentials: true });
                 console.log(response.data.message);
                 setUser(response.data.message);
                 // setDepartmentDefined(response.data.message[0]?.department)
@@ -167,7 +167,7 @@ const ProfileEmployee = () => {
         const getAllDepartments = async () => {
             if (userObject?.role === "Admin") {
                 try {
-                    const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-department/get-all', { withCredentials: true });
+                    const response = await axios.get('http://localhost:8800/api/admin/manage-department/get-all', { withCredentials: true });
                     setDepartmentList(response.data);
                 } catch (err) {
                     alert(err.response?.data?.message)
@@ -295,7 +295,7 @@ const ProfileEmployee = () => {
 
         if (userObject?.role === "Admin") {
             try {
-                const { data } = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-employee/update-basic?employeeID=${id}&employeeName=${name}`,
+                const { data } = await axios.put(`http://localhost:8800/api/admin/manage-employee/update-basic?employeeID=${id}&employeeName=${name}`,
                     {
                         id: editingData.id,
                         name: editingData.name,
@@ -330,7 +330,7 @@ const ProfileEmployee = () => {
 
         if (userObject?.role === "Inhaber") {
             try {
-                const { data } = await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/update?inhaber_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`,
+                const { data } = await axios.put(`http://localhost:8800/api/inhaber/manage-employee/update?inhaber_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`,
                     {
                         id: editingData.id,
                         name: editingData.name,
@@ -366,7 +366,7 @@ const ProfileEmployee = () => {
 
         if (userObject?.role === "Admin") {
             try {
-                const { data } = await axios.delete(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-employee/delete-byId?employeeID=${id}&employeeName=${name}`,
+                const { data } = await axios.delete(`http://localhost:8800/api/admin/manage-employee/delete-byId?employeeID=${id}&employeeName=${name}`,
                     { withCredentials: true },
                 );
 
@@ -380,7 +380,7 @@ const ProfileEmployee = () => {
         }
         if (userObject?.role === "Inhaber") {
             try {
-                const { data } = await axios.delete(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/delete-byId?inhaber_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`,
+                const { data } = await axios.delete(`http://localhost:8800/api/inhaber/manage-employee/delete-byId?inhaber_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`,
                     { withCredentials: true },
                 );
 
@@ -398,7 +398,7 @@ const ProfileEmployee = () => {
 
         if (userObject?.role === "Admin") {
             try {
-                const { data } = await axios.post(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-employee/make-inactive?employeeID=${id}&employeeName=${name}`,
+                const { data } = await axios.post(`http://localhost:8800/api/admin/manage-employee/make-inactive?employeeID=${id}&employeeName=${name}`,
                     {
 
                         inactive_day: `${dateInactive} ${timeInactive}`,
@@ -420,7 +420,7 @@ const ProfileEmployee = () => {
 
         if (userObject?.role === "Inhaber") {
             try {
-                const { data } = await axios.post(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/make-inactive?inhaber_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`,
+                const { data } = await axios.post(`http://localhost:8800/api/inhaber/manage-employee/make-inactive?inhaber_name=${userObject?.name}&employeeID=${id}&employeeName=${name}`,
                     {
 
                         inactive_day: `${dateInactive} ${timeInactive}`,

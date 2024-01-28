@@ -25,7 +25,7 @@ const History = () => {
         if (userObject.role === 'Admin', inputId !== "", inputName !== "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-salary/get?employeeID=${inputId}&employeeName=${inputName}`,
+                    `http://localhost:8800/api/admin/manage-salary/get?employeeID=${inputId}&employeeName=${inputName}`,
                     { withCredentials: true }
                 );
                 setSalaryListByMonth(data?.message)
@@ -42,7 +42,7 @@ const History = () => {
             if (userObject.role === 'Admin', inputId !== "") {
                 try {
                     const { data } = await axios.get(
-                        `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-all/search-specific?details=${inputId}`,
+                        `http://localhost:8800/api/admin/manage-all/search-specific?details=${inputId}`,
                         { withCredentials: true }
                     );
                     setUserList(data?.message)
@@ -55,7 +55,7 @@ const History = () => {
             if (userObject.role === 'Inhaber', inputId !== "") {
                 try {
                     const { data } = await axios.get(
-                        `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&details=${inputId}`,
+                        `http://localhost:8800/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&details=${inputId}`,
                         { withCredentials: true }
                     );
                     setUserList(data?.message)

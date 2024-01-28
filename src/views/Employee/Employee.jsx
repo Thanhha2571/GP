@@ -90,7 +90,7 @@ function Employee() {
         if (userObject?.role === 'Admin' && selectedRoleUser === 'Employee') {
             try {
                 const { data } = await axios.post(
-                    "https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/auth/manage-admin/register-employee",
+                    "http://localhost:8800/api/auth/manage-admin/register-employee",
                     {
                         id: formData.user.id.trim(),
                         name: formData.user.name.trim(),
@@ -131,7 +131,7 @@ function Employee() {
         if (userObject?.role === 'Inhaber' && selectedRoleUser === 'Employee') {
             try {
                 const { data } = await axios.post(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/auth/manage-inhaber/register-employee?inhaber_name=${userObject?.name}`,
+                    `http://localhost:8800/api/auth/manage-inhaber/register-employee?inhaber_name=${userObject?.name}`,
                     {
                         id: formData.user.id.trim(),
                         name: formData.user.name.trim(),
@@ -168,7 +168,7 @@ function Employee() {
         if (userObject?.role === 'Manager' && selectedRoleUser === 'Employee') {
             try {
                 const { data } = await axios.post(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/auth/manage-manager/register-employee?manager_name=${userObject?.name}`,
+                    `http://localhost:8800/api/auth/manage-manager/register-employee?manager_name=${userObject?.name}`,
                     {
                         id: formData.user.id.trim(),
                         name: formData.user.name.trim(),
@@ -205,7 +205,7 @@ function Employee() {
         if (userObject?.role === 'Inhaber' && selectedRoleUser === 'Manager') {
             try {
                 const { data } = await axios.post(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/auth/manage-inhaber/register-manager?inhaber_name=${userObject?.name}`,
+                    `http://localhost:8800/api/auth/manage-inhaber/register-manager?inhaber_name=${userObject?.name}`,
                     {
                         id: formData.user.id.trim(),
                         name: formData.user.name.trim(),
@@ -243,7 +243,7 @@ function Employee() {
         if (userObject?.role === 'Admin' && selectedRoleUser === 'Inhaber') {
             try {
                 const { data } = await axios.post(
-                    "https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/auth/manage-admin/register-inhaber",
+                    "http://localhost:8800/api/auth/manage-admin/register-inhaber",
                     {
                         id: formData.user.id.trim(),
                         name: formData.user.name.trim(),
@@ -281,7 +281,7 @@ function Employee() {
         if (userObject?.role === 'Admin' && selectedRoleUser === 'Manager') {
             try {
                 const { data } = await axios.post(
-                    "https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/auth/manage-admin/register-manager",
+                    "http://localhost:8800/api/auth/manage-admin/register-manager",
                     {
                         id: formData.user.id.trim(),
                         name: formData.user.name.trim(),
@@ -350,7 +350,7 @@ function Employee() {
         //----------------------------------------------------------------SEARCH BY ADMIN----------------------------------------------------------------//
         if (userObject.role === 'Admin') {
             try {
-                const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-all/search-specific?department=${department}&details=${details}&role=${role}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8800/api/admin/manage-all/search-specific?department=${department}&details=${details}&role=${role}`, { withCredentials: true });
                 // console.log(query);
                 setUserList(response.data.message);
             } catch (error) {
@@ -392,7 +392,7 @@ function Employee() {
         if (userObject.role === 'Inhaber') {
             if (inputSearch === "" && selectedRole !== "Select Role") {
                 try {
-                    const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&role=${selectedRole}`, { withCredentials: true });
+                    const response = await axios.get(`http://localhost:8800/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&role=${selectedRole}`, { withCredentials: true });
                     // console.log(query);
                     setUserList(response.data.message);
                 } catch (error) {
@@ -403,7 +403,7 @@ function Employee() {
             }
             if (inputSearch !== "" && selectedRole === "Select Role") {
                 try {
-                    const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&details=${inputSearch}`, { withCredentials: true });
+                    const response = await axios.get(`http://localhost:8800/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&details=${inputSearch}`, { withCredentials: true });
                     // console.log(query);
                     setUserList(response.data.message);
                 } catch (error) {
@@ -423,7 +423,7 @@ function Employee() {
         if (userObject.role === 'Manager') {
             if (inputSearch !== "") {
                 try {
-                    const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/manager/manage-employee/search-specific?manager_name=${userObject?.name}&details=${inputSearch}`, { withCredentials: true });
+                    const response = await axios.get(`http://localhost:8800/api/manager/manage-employee/search-specific?manager_name=${userObject?.name}&details=${inputSearch}`, { withCredentials: true });
                     // console.log(query);
                     setUserList(response.data.message);
                 } catch (error) {
@@ -449,7 +449,7 @@ function Employee() {
                 setLoading(true);
 
                 const { data } = await axios.get(
-                    "https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-xlsx/employee-data",
+                    "http://localhost:8800/api/admin/manage-xlsx/employee-data",
                     { responseType: "arraybuffer", withCredentials: true }
                 );
 
@@ -474,7 +474,7 @@ function Employee() {
                 setLoading(true);
 
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-xlsx/employee-data?inhaber_name=${userObject?.name}`,
+                    `http://localhost:8800/api/inhaber/manage-xlsx/employee-data?inhaber_name=${userObject?.name}`,
                     { responseType: "arraybuffer", withCredentials: true }
                 );
 
@@ -500,17 +500,17 @@ function Employee() {
         setLoading(true);
         try {
             if (userObject?.role === 'Admin') {
-                const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-all/search-specific', { withCredentials: true });
+                const response = await axios.get('http://localhost:8800/api/admin/manage-all/search-specific', { withCredentials: true });
                 setUserList(response.data.message);
             }
             if (userObject?.role === 'Inhaber') {
                 // console.log("sdfs");
-                const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}`, { withCredentials: true }
+                const response = await axios.get(`http://localhost:8800/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}`, { withCredentials: true }
                 );
                 setUserList(response.data.message);
             }
             if (userObject?.role === 'Manager') {
-                const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/manager/manage-employee/search-specific?manager_name=${userObject?.name}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8800/api/manager/manage-employee/search-specific?manager_name=${userObject?.name}`, { withCredentials: true });
                 setUserList(response.data.message);
             }
 
@@ -536,7 +536,7 @@ function Employee() {
         const getAllDepartments = async () => {
             if (userObject?.role === "Admin") {
                 try {
-                    const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-department/get-all', { withCredentials: true });
+                    const response = await axios.get('http://localhost:8800/api/admin/manage-department/get-all', { withCredentials: true });
                     setDepartmentList(response.data);
                 } catch (err) {
                     alert(err.response?.data?.message)

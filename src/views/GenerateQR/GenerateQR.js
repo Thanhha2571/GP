@@ -59,7 +59,7 @@ const GenerateQR = () => {
         const getAllDepartments = async () => {
             if (userObject?.role === "Admin") {
                 try {
-                    const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-department/get-all', { withCredentials: true });
+                    const response = await axios.get('http://localhost:8800/api/admin/manage-department/get-all', { withCredentials: true });
                     setDepartmentList(response.data);
                 } catch (err) {
                     alert(err.response?.data?.message)

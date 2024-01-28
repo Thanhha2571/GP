@@ -32,7 +32,7 @@ const Car = () => {
     const getAllCars = async () => {
         if (userObject?.role === "Admin") {
             try {
-                const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-car/get', { withCredentials: true });
+                const response = await axios.get('http://localhost:8800/api/admin/manage-car/get', { withCredentials: true });
                 // console.log(response.data.message);
                 setCarList(response?.data?.message);
             } catch (err) {
@@ -41,7 +41,7 @@ const Car = () => {
         }
         if (userObject?.role === "Inhaber") {
             try {
-                const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-car/get?inhaber_name=${userObject?.name}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8800/api/inhaber/manage-car/get?inhaber_name=${userObject?.name}`, { withCredentials: true });
                 // console.log(response.data.message);
                 setCarList(response?.data?.message);
             } catch (err) {
@@ -53,7 +53,7 @@ const Car = () => {
     const getAllDepartments = async () => {
         if (userObject?.role === "Admin") {
             try {
-                const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-department/get-all', { withCredentials: true });
+                const response = await axios.get('http://localhost:8800/api/admin/manage-department/get-all', { withCredentials: true });
                 setDepartmentList(response.data);
             } catch (err) {
                 alert(err.response?.data?.message)
@@ -107,7 +107,7 @@ const Car = () => {
         if (userObject?.role === 'Admin') {
             try {
                 const { data } = await axios.post(
-                    "https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-car/create",
+                    "http://localhost:8800/api/admin/manage-car/create",
                     {
                         car_name: formData.car.car_name,
                         car_number: formData.car.car_number,
@@ -137,7 +137,7 @@ const Car = () => {
         if (userObject?.role === 'Inhaber') {
             try {
                 const { data } = await axios.post(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-car/create?inhaber_name=${userObject?.name}`,
+                    `http://localhost:8800/api/inhaber/manage-car/create?inhaber_name=${userObject?.name}`,
                     {
                         car_name: formData.car.car_name,
                         car_number: formData.car.car_number,

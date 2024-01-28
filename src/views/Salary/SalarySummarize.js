@@ -47,7 +47,7 @@ const SalarySummarizie = () => {
         if (userObject.role === 'Admin' && monthPicker !== "" && inputId === "" && inputName === "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-salary/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}`,
+                    `http://localhost:8800/api/admin/manage-salary/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}`,
                     { withCredentials: true }
                 );
                 setSalaryListByMonth(data?.message)
@@ -63,7 +63,7 @@ const SalarySummarizie = () => {
         if (userObject.role === 'Admin' && monthPicker !== "" && inputId !== "" && inputName !== "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-salary/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${inputId}&employeeName=${inputName}`,
+                    `http://localhost:8800/api/admin/manage-salary/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&employeeID=${inputId}&employeeName=${inputName}`,
                     { withCredentials: true }
                 );
                 setSalaryListByMonth(data?.message)
@@ -77,7 +77,7 @@ const SalarySummarizie = () => {
         if (userObject.role === 'Inhaber' && monthPicker !== "" && inputId === "" && inputName === "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-salary/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&inhaber_name=${userObject?.name}`,
+                    `http://localhost:8800/api/inhaber/manage-salary/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&inhaber_name=${userObject?.name}`,
                     { withCredentials: true }
                 );
                 setSalaryListByMonth(data?.message)
@@ -90,7 +90,7 @@ const SalarySummarizie = () => {
         if (userObject.role === 'Inhaber' && monthPicker !== "" && inputId !== "" && inputName !== "") {
             try {
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-salary/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&inhaber_name=${userObject?.name}&employeeID=${inputId}&employeeName=${inputName}`,
+                    `http://localhost:8800/api/inhaber/manage-salary/get?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0, 2)}&inhaber_name=${userObject?.name}&employeeID=${inputId}&employeeName=${inputName}`,
                     { withCredentials: true }
                 );
                 setSalaryListByMonth(data?.message)
@@ -109,9 +109,9 @@ const SalarySummarizie = () => {
             year: '',
             a: '',
             b: '',
-            c: '',
-            d: '0.25',
-            f: ''
+            // c: '',
+            // d: '0.25',
+            // f: ''
         },
     });
 
@@ -120,7 +120,7 @@ const SalarySummarizie = () => {
             if (userObject.role === 'Admin', formData?.user?.id !== "") {
                 try {
                     const { data } = await axios.get(
-                        `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-all/search-specific?details=${formData?.user?.id}`,
+                        `http://localhost:8800/api/admin/manage-all/search-specific?details=${formData?.user?.id}`,
                         { withCredentials: true }
                     );
                     setUserList(data?.message)
@@ -133,7 +133,7 @@ const SalarySummarizie = () => {
             if (userObject.role === 'Inhaber', formData?.user?.id !== "") {
                 try {
                     const { data } = await axios.get(
-                        `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&details=${formData?.user?.id}`,
+                        `http://localhost:8800/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&details=${formData?.user?.id}`,
                         { withCredentials: true }
                     );
                     setUserList(data?.message)
@@ -148,7 +148,7 @@ const SalarySummarizie = () => {
             if (userObject.role === 'Admin', inputId !== "") {
                 try {
                     const { data } = await axios.get(
-                        `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-all/search-specific?details=${inputId}`,
+                        `http://localhost:8800/api/admin/manage-all/search-specific?details=${inputId}`,
                         { withCredentials: true }
                     );
                     setUserListSearch(data?.message)
@@ -161,7 +161,7 @@ const SalarySummarizie = () => {
             if (userObject.role === 'Inhaber', inputId !== "") {
                 try {
                     const { data } = await axios.get(
-                        `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&details=${inputId}`,
+                        `http://localhost:8800/api/inhaber/manage-employee/search-specific?inhaber_name=${userObject?.name}&details=${inputId}`,
                         { withCredentials: true }
                     );
                     setUserListSearch(data?.message)
@@ -194,13 +194,13 @@ const SalarySummarizie = () => {
             if (userObject?.role === "Admin") {
                 try {
                     const { data } = await axios.post(
-                        `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-salary/calculate/${formData.user.id}?employeeName=${selectedUserName}&year=${formData.user.year}&month=${formData.user.month}`,
+                        `http://localhost:8800/api/admin/manage-salary/calculate/${formData.user.id}?employeeName=${selectedUserName}&year=${formData.user.year}&month=${formData.user.month}`,
                         {
                             a_new: formData.user.a,
                             b_new: formData.user.b,
-                            c_new: formData.user.c,
-                            d_new: formData.user.d,
-                            f_new: formData.user.f
+                            // c_new: formData.user.c,
+                            // d_new: formData.user.d,
+                            // f_new: formData.user.f
                         },
                         { withCredentials: true }
                     );
@@ -212,9 +212,9 @@ const SalarySummarizie = () => {
                             year: '',
                             a: '',
                             b: '',
-                            c: '',
-                            d: '0.25',
-                            f: ''
+                            // c: '',
+                            // d: '0.25',
+                            // f: ''
                         },
                     });
                     setSelectedUserName("")
@@ -229,13 +229,13 @@ const SalarySummarizie = () => {
             if (userObject?.role === "Inhaber") {
                 try {
                     const { data } = await axios.post(
-                        `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-salary/calculate/${formData.user.id}?employeeName=${selectedUserName}&year=${formData.user.year}&month=${formData.user.month}`,
+                        `http://localhost:8800/api/inhaber/manage-salary/calculate/${formData.user.id}?employeeName=${selectedUserName}&year=${formData.user.year}&month=${formData.user.month}`,
                         {
                             a_new: formData.user.a,
                             b_new: formData.user.b,
-                            c_new: formData.user.c,
-                            d_new: formData.user.d,
-                            f_new: formData.user.f
+                            // c_new: formData.user.c,
+                            // d_new: formData.user.d,
+                            // f_new: formData.user.f
                         },
                         { withCredentials: true }
                     );
@@ -247,9 +247,9 @@ const SalarySummarizie = () => {
                             year: '',
                             a: '',
                             b: '',
-                            c: '',
-                            d: '0.25',
-                            f: ''
+                            // c: '',
+                            // d: '0.25',
+                            // f: ''
                         },
                     });
                     setSelectedUserName("")
@@ -270,7 +270,7 @@ const SalarySummarizie = () => {
             try {
                 setLoading(true);
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-xlsx/salary-data?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0,2)}`,
+                    `http://localhost:8800/api/admin/manage-xlsx/salary-data?year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0,2)}`,
                     { responseType: "arraybuffer", withCredentials: true }
                 );
 
@@ -294,7 +294,7 @@ const SalarySummarizie = () => {
             try {
                 setLoading(true);
                 const { data } = await axios.get(
-                    `https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-xlsx/salary-data?inhaberName=${userObject?.name}&year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0,2)}`,
+                    `http://localhost:8800/api/inhaber/manage-xlsx/salary-data?inhaberName=${userObject?.name}&year=${monthPicker.substring(3,7)}&month=${monthPicker.substring(0,2)}`,
                     { responseType: "arraybuffer", withCredentials: true }
                 );
 
@@ -404,18 +404,6 @@ const SalarySummarizie = () => {
                                     <span className="table-title-status">b_parameter</span>
                                 </th>
                                 <th className="p-2 text-left">
-                                    <span className="table-title-status">c_parameter</span>
-                                </th>
-                                <th className="p-2 text-left">
-                                    <span className="table-title-status">d_parameter</span>
-                                </th>
-                                <th className="p-2 text-left">
-                                    <span className="table-title-status">f_parameter</span>
-                                </th>
-                                <th className="p-2 text-left">
-                                    <span className="table-title-status">Total Km</span>
-                                </th>
-                                <th className="p-2 text-left">
                                     <span className="table-title-status">Salary</span>
                                 </th>
                             </tr>
@@ -446,10 +434,10 @@ const SalarySummarizie = () => {
                                         <td className="p-2">{total_hour_overtime}</td>
                                         <td className="p-2">{a_parameter}</td>
                                         <td className="p-2">{b_parameter}</td>
-                                        <td className="p-2">{c_parameter}</td>
+                                        {/* <td className="p-2">{c_parameter}</td>
                                         <td className="p-2">{d_parameter}</td>
-                                        <td className="p-2">{f_parameter}</td>
-                                        <td className="p-2">{total_km}</td>
+                                        <td className="p-2">{f_parameter}</td> */}
+                                        {/* <td className="p-2">{total_km}</td> */}
                                         <td className="p-2">{total_salary}</td>
                                     </tr>
                                 ))}
@@ -561,45 +549,6 @@ const SalarySummarizie = () => {
                                                 name="b"
                                                 // required
                                                 value={formData.user.b}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div className="w-full h-auto flex flex-col gap-2">
-                                            <div className="flex flex-row gap-2">
-                                                {/* <span className="text-rose-500">*</span> */}
-                                                <span className="">c_parameter</span>
-                                            </div>
-                                            <input
-                                                type="text"
-                                                name="c"
-                                                // required
-                                                value={formData.user.c}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div className="w-full h-auto flex flex-col gap-2">
-                                            <div className="flex flex-row gap-2">
-                                                {/* <span className="text-rose-500">*</span> */}
-                                                <span className="">d_parameter</span>
-                                            </div>
-                                            <input
-                                                type="text"
-                                                name="d"
-                                                // required
-                                                value={formData.user.d}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                        <div className="w-full h-auto flex flex-col gap-2">
-                                            <div className="flex flex-row gap-2">
-                                                {/* <span className="text-rose-500">*</span> */}
-                                                <span className="">f_parameter</span>
-                                            </div>
-                                            <input
-                                                type="text"
-                                                name="f"
-                                                // required
-                                                value={formData.user.f}
                                                 onChange={handleChange}
                                             />
                                         </div>

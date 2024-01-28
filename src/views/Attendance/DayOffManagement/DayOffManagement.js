@@ -31,7 +31,7 @@ const DayOffManagement = () => {
         if (userObject?.role === "Admin") {
             try {
                 // Make a PUT request to update the answer_status to "approved"
-                await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-request/handle/${requestId}`,
+                await axios.put(`http://localhost:8800/api/admin/manage-request/handle/${requestId}`,
                     {
                         answer_status: "approved"
                     },
@@ -46,7 +46,7 @@ const DayOffManagement = () => {
         if (userObject?.role === "Inhaber") {
             try {
                 // Make a PUT request to update the answer_status to "approved"
-                await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-request/handle/${requestId}?inhaber_name=${userObject?.name}`,
+                await axios.put(`http://localhost:8800/api/inhaber/manage-request/handle/${requestId}?inhaber_name=${userObject?.name}`,
                     {
                         answer_status: "approved"
                     },
@@ -64,7 +64,7 @@ const DayOffManagement = () => {
         if (userObject?.role === "Admin") {
             try {
                 // Make a PUT request to update the answer_status to "approved"
-                await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-request/handle/${requestId}`,
+                await axios.put(`http://localhost:8800/api/admin/manage-request/handle/${requestId}`,
                     {
                         answer_status: "denied"
                     },
@@ -80,7 +80,7 @@ const DayOffManagement = () => {
         if (userObject?.role === "Inhaber") {
             try {
                 // Make a PUT request to update the answer_status to "approved"
-                await axios.put(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-request/handle/${requestId}?inhaber_name=${userObject?.name}`,
+                await axios.put(`http://localhost:8800/api/inhaber/manage-request/handle/${requestId}?inhaber_name=${userObject?.name}`,
                     {
                         answer_status: "denied"
                     },
@@ -98,7 +98,7 @@ const DayOffManagement = () => {
     const getAllRequestList = async () => {
         if (userObject?.role === "Admin") {
             try {
-                const response = await axios.get('https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/admin/manage-request/get-all', { withCredentials: true });
+                const response = await axios.get('http://localhost:8800/api/admin/manage-request/get-all', { withCredentials: true });
                 setRequestList(response.data.message);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -106,7 +106,7 @@ const DayOffManagement = () => {
         }
         if (userObject?.role === "Inhaber") {
             try {
-                const response = await axios.get(`https://qrcodecheckin-d350fcfb1cb9.herokuapp.com/api/inhaber/manage-request/get-all?inhaber_name=${userObject?.name}`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8800/api/inhaber/manage-request/get-all?inhaber_name=${userObject?.name}`, { withCredentials: true });
                 setRequestList(response.data.message);
             } catch (error) {
                 console.error('Error fetching data:', error);
